@@ -173,6 +173,7 @@ namespace TinyServer
                     }
 
                     byte[] data = File.ReadAllBytes(fullPath);
+                    context.Response.AddHeader("Access-Control-Allow-Origin", "*");
                     context.Response.ContentType = Tool.GetContentTypeFromPath(fullPath);
                     context.Response.ContentLength64 = data.Length;
                     await context.Response.OutputStream.WriteAsync(data, 0, data.Length);
